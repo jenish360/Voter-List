@@ -1,0 +1,176 @@
+Create a personal self-use web application using Python Flask.
+
+This application is only for personal reference.
+It manually stores and manages local ward-level reference details.
+No government or official voter list is used.
+All data is stored locally inside the project using SQLite.
+
+--------------------------------------------------
+DATABASE REQUIREMENTS
+--------------------------------------------------
+
+Use SQLite database named "ward_data.db" stored locally.
+
+Create table "people" with fields:
+- id (integer, primary key, auto increment)
+- name (text, required)
+- house_name (text)
+- area (text)
+- ward_no (text)
+- booth_no (text)
+- phone (text)
+- notes (text)
+- is_marked (integer, default 0)   -- 1 = marked, 0 = not marked
+- created_at (timestamp)
+
+--------------------------------------------------
+HOME PAGE (VERY IMPORTANT)
+--------------------------------------------------
+
+Home page must contain ONLY the following:
+
+1. Search box at the top
+   - Placeholder: "Search by name, house, or area"
+   - Search works across name, house_name, and area
+
+2. BELOW SEARCH BOX:
+   Show TWO LARGE SUMMARY BOXES (NOT PERSON LIST)
+
+   A. MARKED COUNT BOX
+      - Green colored box
+      - Text: "MARKED"
+      - Show ONLY the COUNT number of marked people
+      - Example: If 2 people are marked, show big number "2"
+      - No names shown here
+
+   B. NOT MARKED COUNT BOX
+      - Red colored box
+      - Text: "NOT MARKED"
+      - Show ONLY the COUNT number of unmarked people
+      - Example: If 2 people are not marked, show big number "2"
+      - No names shown here
+
+3. These boxes must always reflect real-time database counts.
+
+--------------------------------------------------
+SEARCH RESULT BEHAVIOR
+--------------------------------------------------
+
+When user searches:
+
+- Show matching people list BELOW the count boxes
+- Each person result must show:
+  - Name
+  - House name
+  - Area
+
+- Color rules:
+  - Marked person → GREEN background
+  - Not marked person → RED background
+
+- Each person item must be clickable to open details view
+
+--------------------------------------------------
+PERSON DETAILS PAGE
+--------------------------------------------------
+
+When a person is opened, show ALL details:
+
+- Name
+- House name
+- Area
+- Ward number
+- Booth number
+- Phone
+- Notes
+- Mark status
+
+Show EXACTLY THREE BUTTONS:
+
+1. MARK / UNMARK
+   - Toggle mark status
+   - If marked → set is_marked = 1
+   - If unmarked → set is_marked = 0
+   - Update color immediately
+
+2. EDIT
+   - Open edit form
+   - Allow editing all fields
+   - Save updates to database
+
+3. DELETE
+   - Ask confirmation
+   - Permanently delete record from database
+
+--------------------------------------------------
+ADD PERSON PAGE
+--------------------------------------------------
+
+Form fields:
+- Name (required)
+- House name
+- Area
+- Ward number
+- Booth number
+- Phone
+- Notes
+
+Save data to SQLite.
+
+--------------------------------------------------
+EDIT PERSON PAGE
+--------------------------------------------------
+
+- Pre-fill existing data
+- Allow update
+- Save changes
+- Redirect back to details page
+
+--------------------------------------------------
+UI & DESIGN RULES
+--------------------------------------------------
+
+- Simple clean UI
+- Mobile friendly
+- No external frameworks
+- Green color = marked
+- Red color = not marked
+- Count boxes must be visually large and clear
+
+--------------------------------------------------
+PRIVACY & SAFETY
+--------------------------------------------------
+
+- No authentication
+- No public API
+- No data export
+- No scraping
+- No government data
+- Local project storage only
+- Self-use only
+
+--------------------------------------------------
+PROJECT STRUCTURE
+--------------------------------------------------
+
+app.py
+/templates
+  - base.html
+  - home.html
+  - add.html
+  - details.html
+  - edit.html
+/static
+  - style.css
+
+--------------------------------------------------
+BEHAVIOR
+--------------------------------------------------
+
+- Auto-create database and table on first run
+- Use parameterized SQL queries
+- Support partial search
+- Count boxes must update dynamically
+- Delete removes data permanently
+
+Generate FULL working code for all files.
